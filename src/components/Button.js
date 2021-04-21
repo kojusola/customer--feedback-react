@@ -3,7 +3,14 @@ import React from "react";
 const Button = (props) =>{
 
     return(
-        <div></div>
+        <div>
+            <button
+            style={{backgroundColor: props.backgroundColor, margin:"10px"}}
+            className="btn btn-lg"
+            >
+            {props.title}
+            </button>
+        </div>
     )
 }
 
