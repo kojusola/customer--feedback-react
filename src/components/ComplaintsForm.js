@@ -3,6 +3,7 @@ import Input from "./Input"
 import Button from "./Button";
 import TextArea from "./TextArea"
 import Select from "./Select"
+import FeedBack from "./feedback"
 
 class ComplaintsForm extends Component{
     
@@ -20,7 +21,8 @@ class ComplaintsForm extends Component{
                 "Others"
             ],
             description:"",
-            feedbackDetails:""
+            feedbackDetails:null,
+            showFeedbackDetails: false
         }
         // this.handleFullNameChange = this.handleFullNameChange.bind(this)
     }
@@ -54,7 +56,7 @@ class ComplaintsForm extends Component{
             reason,
             description
         }
-        this.setState({feedbackDetails})
+        this.setState({feedbackDetails, showFeedbackDetails: true})
     }
     handleReset = (event) =>{
         event.preventDefault();
@@ -63,13 +65,14 @@ class ComplaintsForm extends Component{
             fullName:"",
             email:"",
             description:"",
-            reason:""
+            reason:"",
+            showFeedbackDetails: false
         })
     }
     render(){
         return(
-            <div className="row mt-4">
-                <form>
+            <div className="d-flex flex-row mt-3">
+                <form className="w-50 mr-3">
                 <Input 
                 name="fullName" 
                 title=" Full Name" 
@@ -109,6 +112,11 @@ class ComplaintsForm extends Component{
                 title="Reset Form"
                 backgroundColor="#7f8c8d"/>
                 </form>
+                <div className="mx-5">
+                {this.state.showFeedbackDetails &&
+                    <FeedBack
+                    feedbackDetails={this.state.feedbackDetails}/>}
+                </div>
             </div>
         )
     }
