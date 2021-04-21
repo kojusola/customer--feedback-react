@@ -6,6 +6,7 @@ const Input = (props) => {
             <label htmlFor={props.name} className="form-label">{props.title}</label>
             <input
             className="form-control"
+            name= {props.name}
             id={props.name}
             type={props.input}
             value={props.value}
